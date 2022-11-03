@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Board from './components/Board';
+import Board from './components/Board/Board';
 
 const App = () => {
   
@@ -10,10 +10,21 @@ const App = () => {
     x: 0,
     o: 0,
 });
+const checkForWinner = squares =>{
+  setTurn(turn==='x' ? 'O' : 'x');
+}
+
+  const handleClick = square =>{
+    let newSquares = [...squares];
+    newSquares.splice(square, 1, turn );
+    setSquares(newSquares);
+    checkForWinner(newSquares);
+
+  }
  
   return (
     <div className = "container">
-      <Board squares={squares}/>
+      <Board squares={squares} onClick={handleClick}/>
     </div>
   );
 }
