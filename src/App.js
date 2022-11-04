@@ -1,32 +1,31 @@
-import { useState } from 'react';
-import './App.css';
-import Board from './components/Board/Board';
+import { useState } from "react";
+import "./App.css";
+import Board from "./components/Board/Board";
 
 const App = () => {
-  
-  const [turn, setTurn] = useState('x');
+  const [turn, setTurn] = useState("x");
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [score, setScore] = useState({
     x: 0,
     o: 0,
-});
-const checkForWinner = squares =>{
-  setTurn(turn==='x' ? 'O' : 'x');
-}
+  });
+  const checkForWinner = (squares) => {
+    setTurn(turn === "x" ? "O" : "x");
+  };
 
-  const handleClick = square =>{
+  const handleClick = (square) => {
     let newSquares = [...squares];
-    newSquares.splice(square, 1, turn );
+    newSquares.splice(square, 1, turn);
+    console.log(newSquares);
     setSquares(newSquares);
     checkForWinner(newSquares);
+  };
 
-  }
- 
   return (
-    <div className = "container">
-      <Board turn={turn} squares={squares} onClick={handleClick}/>
+    <div className="container">
+      <Board turn={turn} squares={squares} onClick={handleClick} />
     </div>
   );
-}
+};
 
 export default App;

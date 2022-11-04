@@ -1,20 +1,18 @@
-import './square.css';
-import classNames from 'classnames';
-const Square = ({value, onClick, turn}) =>{
-const handleClick = () =>{
-  (turn!== null && value === null) && onClick();
-} 
+import "./square.css";
+import classNames from "classnames";
 
-    let squareClass = classNames({
-        square: true,
-        [`square--${value}`]: value !== null,
-    })
+const Square = ({ value, onClick, turn }) => {
+    
+  const handleClick = () => {
+    turn !== null && value === null && onClick();
+  };
 
-    return(
-        <div className={squareClass} onClick={()=>handleClick()}>
+  let squareClass = classNames({
+    square: true,
+    [`square--${value}`]: value !== null,
+  });
 
-        </div>
-    )
-}
+  return <div className={squareClass} onClick={handleClick}></div>;
+};
 
 export default Square;
