@@ -22,7 +22,7 @@ const App = () => {
   const [winningSquares, setWinningSqares] = useState([]);
   const [score, setScore] = useState({
     x: 0,
-    o: 0,
+    O: 0,
   });
  
 
@@ -64,6 +64,7 @@ const App = () => {
 
   const endGame = (result, winningPositions) =>{
     setTurn(null);
+    
     if(result !== null) {
       setScore({
         ...score,
@@ -78,7 +79,7 @@ const App = () => {
   return (
     <div className="container">
       <Board winningSquares={winningSquares} turn={turn} squares={squares} onClick={handleClick} />
-      <ScoreBoard scoreO={score.O} scoreX={score.X} />
+      <ScoreBoard scoreO={score.O} scoreX={score.x} />
     </div>
   );
 };
